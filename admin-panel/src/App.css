@@ -1,0 +1,25 @@
+/* App.css – Clean and minimal */
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+button {
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  opacity: 0.95;
+}
+
+a {
+  color: #3498db;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}

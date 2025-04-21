@@ -91,7 +91,10 @@ export default function LawyerDashboard() {
 
       <View style={styles.card}>
         <Text style={styles.cardTitle}>Total Consultations</Text>
-        <Text style={styles.cardNumber}>{consultations.length}</Text>
+        <Text style={styles.cardNumber}>
+  {consultations.filter((c) => c.status !== 'rejected').length}
+</Text>
+
       </View>
 
       <Text style={styles.sectionTitle}>Consultation Requests</Text>
@@ -101,7 +104,9 @@ export default function LawyerDashboard() {
       ) : consultations.length === 0 ? (
         <Text style={styles.empty}>No consultation requests found.</Text>
       ) : (
-        consultations.map((c) => (
+        consultations
+  .filter((c) => c.status !== 'rejected')
+  .map((c) => (
           <View key={c.id} style={styles.requestCard}>
             <View style={styles.cardRow}>
               <Text style={styles.clientName}>{c.client_name || c.client_email}</Text>

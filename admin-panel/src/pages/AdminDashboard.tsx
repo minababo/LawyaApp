@@ -69,7 +69,7 @@ export default function AdminDashboard() {
 
   return (
     <div style={styles.container}>
-      <h2 style={styles.title}>Lawyer Management</h2>
+      <h2 style={styles.title}> Lawyer Management</h2>
 
       <div style={styles.toolbar}>
         <div style={styles.toggleRow}>

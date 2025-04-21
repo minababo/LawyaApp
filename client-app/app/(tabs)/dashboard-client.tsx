@@ -103,7 +103,9 @@ export default function ClientDashboard() {
       ) : consultations.length === 0 ? (
         <Text style={styles.empty}>No consultations yet.</Text>
       ) : (
-        consultations.map((c) => (
+        consultations
+  .filter((c) => c.status !== 'rejected')
+  .map((c) => (
           <View key={c.id} style={styles.consultCard}>
             <Text style={styles.consultTitle}>{c.title}</Text>
             <Text style={styles.consultInfo}>Type: {c.case_type}</Text>

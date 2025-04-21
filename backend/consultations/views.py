@@ -70,6 +70,18 @@ class ConsultationUpdateView(UpdateAPIView):
     serializer_class = ConsultationRequestSerializer
     permission_classes = [permissions.IsAuthenticated]
 
+    def patch(self, request, *args, **kwargs):
+        instance = self.get_object()
+        new_status = request.data.get('status')
+
+        if new_status == 'rejected' and instance.status != 'rejected':
+            # Refund CP to the client
+            cp, _ = ConsultationPoint.objects.get_or_create(user=instance.client)
+            cp.balance += 1
+            cp.save()
+
+        return super().patch(request, *args, **kwargs)
+
 class ConsultationDetailView(RetrieveAPIView):
     queryset = ConsultationRequest.objects.all()
     serializer_class = ConsultationRequestSerializer

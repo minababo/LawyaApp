@@ -10,9 +10,11 @@ import { router } from 'expo-router';
 
 interface Consultation {
   id: number;
+  title?: string;
   case_type: string;
   status?: string;
   requested_time: string;
+  scheduled_time?: string;
   client_email: string;
   client_name?: string;
 }
@@ -105,8 +107,14 @@ export default function LawyerDashboard() {
               <Text style={styles.clientName}>{c.client_name || c.client_email}</Text>
               {renderStatus(c.status)}
             </View>
+            {c.title && <Text style={styles.titleText}>📌 {c.title}</Text>}
             <Text style={styles.caseType}>📝 {c.case_type}</Text>
-            <Text style={styles.requestTime}>📅 {moment(c.requested_time).format('LLLL')}</Text>
+            <Text style={styles.requestTime}>
+              📅 {c.scheduled_time
+                ? moment(c.scheduled_time).format('LLLL')
+                : moment(c.requested_time).format('LLLL')}
+            </Text>
+
             
             {c.status === 'accepted' && (
               <TouchableOpacity
@@ -243,5 +251,10 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontWeight: '600',
   },
-  
+  titleText: {
+    fontSize: 15,
+    color: '#222',
+    marginTop: 4,
+    fontWeight: '500',
+  },  
 });

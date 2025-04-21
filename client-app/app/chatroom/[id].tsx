@@ -206,7 +206,7 @@ const styles = StyleSheet.create({
   },
   myBubble: {
     alignSelf: 'flex-end',
-    backgroundColor: '#03A2E9',
+    backgroundColor: '#6A9FFA',
   },
   theirBubble: {
     alignSelf: 'flex-start',
@@ -217,7 +217,7 @@ const styles = StyleSheet.create({
     fontWeight: '400',
   },
   linkText: {
-    color: '#fff',
+    color: '#0000FF',
     textDecorationLine: 'underline',
     fontWeight: '500',
   },

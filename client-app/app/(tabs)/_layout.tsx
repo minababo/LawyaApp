@@ -58,7 +58,8 @@ export default function TabsLayout() {
         tabBarInactiveTintColor: '#777',
         headerShown: false,
         tabBarIcon: ({ color, size }: { color: string; size: number }) => {
-          let iconName = 'home';
+          let iconName: keyof typeof MaterialIcons.glyphMap = 'home';
+
           switch (route.name) {
             case 'notifications':
               iconName = 'notifications';
@@ -66,10 +67,14 @@ export default function TabsLayout() {
             case 'profile':
               iconName = 'person';
               break;
+            case 'logout':
+              iconName = 'logout';
+              break;
             default:
               iconName = 'home';
           }
-          return <MaterialIcons name={iconName as any} size={size} color={color} />;
+
+          return <MaterialIcons name={iconName} size={size} color={color} />;
         },
       })}
     >
@@ -79,8 +84,48 @@ export default function TabsLayout() {
       {role === 'lawyer' && (
         <Tabs.Screen name="dashboard-lawyer" options={{ title: 'Home' }} />
       )}
+
+      {/* HIDE the opposite dashboard tab */}
+      {role === 'client' && (
+        <Tabs.Screen name="dashboard-lawyer" options={{ href: null }} />
+      )}
+      {role === 'lawyer' && (
+        <Tabs.Screen name="dashboard-client" options={{ href: null }} />
+      )}
+
       <Tabs.Screen name="notifications" options={{ title: 'Notifications' }} />
       <Tabs.Screen name="profile" options={{ title: 'Profile' }} />
+      <Tabs.Screen
+        name="logout"
+        options={{
+          title: 'Logout',
+          tabBarButton: (props: any) => (
+            <TouchableOpacity onPress={handleLogout}>
+              <View
+                style={{
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  paddingVertical: 10,
+                }}
+              >
+                <MaterialIcons
+                  name="logout"
+                  size={24}
+                  color={props.accessibilityState?.selected ? '#2980b9' : '#777'}
+                />
+                <Text
+                  style={{
+                    fontSize: 12,
+                    color: props.accessibilityState?.selected ? '#2980b9' : '#777',
+                  }}
+                >
+                  Logout
+                </Text>
+              </View>
+            </TouchableOpacity>
+          ),
+        }}
+      />
     </Tabs>
   );
 }

@@ -102,7 +102,7 @@ Visit: [http://localhost:5173](http://localhost:5173)
 ## 👨‍🎓 Project Info
 
 - 📘 **Module**: PUSL2021 – Computing Group Project  
-- 🧑‍🤝‍🧑 **Group**: Group 52
+- 🧑‍🤝‍🧑 **Group**: Group 82
 - 🔖 **Year**: 2024/25
 
 ---

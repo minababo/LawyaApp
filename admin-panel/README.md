@@ -1,6 +1,6 @@
 # 🛠️ Lawya Admin Panel
 
-This folder contains the **web-based admin interface** for the Lawya project — a platform that connects clients in rural Sri Lanka with verified lawyers for remote legal consultations.
+This folder contains the **web-based admin interface** for Lawya
 
 The admin panel is built using **React + TypeScript** and provides tools for managing lawyer registrations and overseeing platform operations.
 

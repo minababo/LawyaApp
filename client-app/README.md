@@ -1,50 +1,31 @@
-# Welcome to your Expo app 👋
+# 📱 Lawya Client App (Frontend)
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+This folder contains the **frontend mobile application** for **Lawya**
+The app is built using **React Native** and **Expo Router**, and it serves as the main user-facing frontend for the project.
 
-## Get started
+---
 
-1. Install dependencies
+## 🔍 Purpose
 
-   ```bash
-   npm install
-   ```
+The Lawya mobile app enables clients to:
 
-2. Start the app
+- 📝 Register and log in securely using NIC-based identity
+- 🔎 Discover lawyers based on expertise and location
+- 📅 Book consultations using Consultation Points (CP)
+- 💬 Communicate via secure chatrooms with file sharing
+- 📂 View and edit profile information
+- 🔔 Get notifications about consultation status and updates
 
-   ```bash
-    npx expo start
-   ```
+Lawyers can also log in to manage incoming consultation requests and chat with clients.
 
-In the output, you'll find options to open the app in a
+This mobile app was developed as part of our university coursework for **PUSL2021 – Computing Group Project**.
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+---
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+## 🧰 Tech Stack
 
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+- **Frontend Framework**: React Native + Expo
+- **Navigation**: Expo Router (file-based routing)
+- **UI Components**: Built using React Native primitives and custom components in `components/ui`
+- **Authentication**: Token-based login via Django REST Framework
+- **Backend API**: Hosted at [`http://192.168.1.3:8000/api/`](http://192.168.1.3:8000/api/)

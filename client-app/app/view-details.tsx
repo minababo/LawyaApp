@@ -1,4 +1,3 @@
-// client-app/app/view-details.tsx
 import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet, ScrollView, ActivityIndicator, Alert } from 'react-native';
 import { useLocalSearchParams } from 'expo-router';

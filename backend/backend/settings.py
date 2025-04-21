@@ -155,3 +155,6 @@ CORS_ALLOWED_ORIGINS = [
 
 ADMIN_SITE_HEADER = "Lawya Admin Panel"
 ADMIN_SITE_TITLE = "Lawya Admin"
+
+TIME_ZONE = 'Asia/Colombo'
+USE_TZ = True

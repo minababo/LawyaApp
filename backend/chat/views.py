@@ -8,6 +8,8 @@ from consultations.models import ConsultationRequest
 from rest_framework.permissions import IsAuthenticated
 from .models import MeetingSchedule
 from .serializers import MeetingScheduleSerializer
+from django.utils.dateparse import parse_datetime
+from django.utils.timezone import localtime
 from rest_framework.decorators import api_view, permission_classes
 
 class MessageListView(generics.ListAPIView):
@@ -95,14 +97,25 @@ class ScheduleMeetingView(APIView):
     permission_classes = [permissions.IsAuthenticated]
 
     def patch(self, request, consultation_id):
-        datetime = request.data.get('meeting_time')
-        if not datetime:
+        datetime_str = request.data.get('meeting_time')
+        if not datetime_str:
             return Response({'error': 'No meeting_time provided'}, status=400)
-        
+
         try:
             consultation = ConsultationRequest.objects.get(id=consultation_id)
-            consultation.scheduled_time = datetime
+            consultation.scheduled_time = datetime_str
             consultation.save()
+
+            scheduled_for = parse_datetime(datetime_str)
+            local_scheduled = localtime(scheduled_for)
+            formatted_time = local_scheduled.strftime('%A, %B %d at %I:%M %p')
+
+            Message.objects.create(
+                consultation=consultation,
+                sender=request.user,
+                content=f"📅 Meeting scheduled for {formatted_time}"
+            )
+
             return Response({'message': 'Meeting time scheduled'}, status=200)
         except ConsultationRequest.DoesNotExist:
             return Response({'error': 'Consultation not found'}, status=404)

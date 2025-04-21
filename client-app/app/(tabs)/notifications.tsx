@@ -1,4 +1,3 @@
-// client-app/app/(tabs)/notifications.tsx
 import { useEffect, useState } from 'react';
 import {
   View,

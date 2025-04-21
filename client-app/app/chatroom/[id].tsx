@@ -4,12 +4,11 @@ import {
   TouchableOpacity, KeyboardAvoidingView, Platform, Linking, Alert
 } from 'react-native';
 import * as DocumentPicker from 'expo-document-picker';
-import * as FileSystem from 'expo-file-system';
+import * as SecureStore from 'expo-secure-store';
 import { useLocalSearchParams } from 'expo-router';
 import { api } from '@/lib/api';
-import * as SecureStore from 'expo-secure-store';
 import { Ionicons } from '@expo/vector-icons';
-import DateTimePicker from '@react-native-community/datetimepicker';
+import DateTimePickerModal from 'react-native-modal-datetime-picker';
 
 interface Message {
   id: number;
@@ -27,8 +26,7 @@ export default function Chatroom() {
   const [userEmail, setUserEmail] = useState('');
   const [otherName, setOtherName] = useState('');
   const scrollViewRef = useRef<ScrollView>(null);
-  const [showPicker, setShowPicker] = useState(false);
-  const [meetingDate, setMeetingDate] = useState<Date | null>(null);
+  const [isPickerVisible, setPickerVisible] = useState(false);
 
   const fetchUserAndMessages = async () => {
     const token = await SecureStore.getItemAsync('authToken');
@@ -48,23 +46,16 @@ export default function Chatroom() {
   const sendMessage = async () => {
     if (!newMessage.trim()) return;
     const token = await SecureStore.getItemAsync('authToken');
-    try {
-      await api.post(
-        `chat/messages/${id}/send/`,
-        { content: newMessage },
-        { headers: { Authorization: `Token ${token}` } }
-      );
-      setNewMessage('');
-      fetchUserAndMessages();
-    } catch (err) {
-      console.error('Send failed:', err);
-    }
+    await api.post(`chat/messages/${id}/send/`, { content: newMessage }, {
+      headers: { Authorization: `Token ${token}` }
+    });
+    setNewMessage('');
+    fetchUserAndMessages();
   };
 
   const sendFile = async () => {
     const token = await SecureStore.getItemAsync('authToken');
     const picked = await DocumentPicker.getDocumentAsync({ copyToCacheDirectory: true });
-
     if (picked.canceled || !picked.assets?.[0]) return;
     const file = picked.assets[0];
 
@@ -75,33 +66,25 @@ export default function Chatroom() {
       type: file.mimeType || 'application/octet-stream',
     } as any);
 
-    try {
-      await api.post(
-        `chat/messages/${id}/send/`,
-        formData,
-        {
-          headers: {
-            Authorization: `Token ${token}`,
-            'Content-Type': 'multipart/form-data',
-          },
-        }
-      );
-      fetchUserAndMessages();
-    } catch (err) {
-      console.error('File send failed:', err);
-    }
+    await api.post(`chat/messages/${id}/send/`, formData, {
+      headers: {
+        Authorization: `Token ${token}`,
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+    fetchUserAndMessages();
   };
 
-  const scheduleMeeting = async (date: Date) => {
-    setShowPicker(false);
+  const handleSchedule = async (date: Date) => {
+    setPickerVisible(false);
     const token = await SecureStore.getItemAsync('authToken');
     try {
-      await api.patch(
-        `chat/schedule/${id}/`,
-        { meeting_time: date.toISOString() },
-        { headers: { Authorization: `Token ${token}` } }
-      );
-      Alert.alert('Meeting scheduled', `Meeting set for ${date.toLocaleString()}`);
+      await api.patch(`chat/schedule/${id}/`, {
+        meeting_time: date.toISOString()
+      }, {
+        headers: { Authorization: `Token ${token}` }
+      });
+      Alert.alert('Meeting Scheduled', `Meeting set for ${date.toLocaleString()}`);
     } catch (err) {
       console.error('Meeting schedule failed:', err);
       Alert.alert('Error', 'Failed to schedule meeting');
@@ -145,8 +128,8 @@ export default function Chatroom() {
     >
       <View style={styles.header}>
         <Text style={styles.headerText}>Chat with {otherName || '...'}</Text>
-        <TouchableOpacity onPress={() => setShowPicker(true)}>
-          <Ionicons name="calendar" size={20} color="#2980b9" />
+        <TouchableOpacity onPress={() => setPickerVisible(true)}>
+          <Ionicons name="calendar" size={22} color="#2980b9" />
         </TouchableOpacity>
       </View>
 
@@ -171,21 +154,12 @@ export default function Chatroom() {
         })}
       </ScrollView>
 
-      {showPicker && (
-        <DateTimePicker
-          value={new Date()}
-          mode="datetime"
-          display="default"
-          onChange={(event, date) => {
-            if (date) {
-              setMeetingDate(date);
-              scheduleMeeting(date);
-            } else {
-              setShowPicker(false);
-            }
-          }}
-        />
-      )}
+      <DateTimePickerModal
+        isVisible={isPickerVisible}
+        mode="datetime"
+        onConfirm={handleSchedule}
+        onCancel={() => setPickerVisible(false)}
+      />
 
       <View style={styles.inputRow}>
         <TouchableOpacity onPress={sendFile} style={styles.attachBtn}>

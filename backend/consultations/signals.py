@@ -5,7 +5,6 @@ from users.models import Notification
 
 @receiver(post_save, sender=ConsultationRequest)
 def create_consultation_notification(sender, instance, created, **kwargs):
-    print("🚨 SIGNAL TRIGGERED:", instance.status)
 
     if not created:
         if instance.status == 'accepted':

@@ -1,4 +1,3 @@
-// client-app/app/dashboard-client.tsx
 import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet, ScrollView, ActivityIndicator, Alert, TouchableOpacity } from 'react-native';
 import * as SecureStore from 'expo-secure-store';

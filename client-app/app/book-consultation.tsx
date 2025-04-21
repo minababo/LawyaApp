@@ -1,4 +1,3 @@
-// client-app/app/book-consultation.tsx
 import React, { useEffect, useState } from 'react';
 import {
   View,

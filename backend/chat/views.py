@@ -106,6 +106,14 @@ class ScheduleMeetingView(APIView):
             consultation.scheduled_time = datetime_str
             consultation.save()
 
+            meeting, _ = MeetingSchedule.objects.update_or_create(
+                consultation=consultation,
+                defaults={
+                    'scheduled_time': datetime_str,
+                    'created_by': request.user
+                }
+            )
+
             scheduled_for = parse_datetime(datetime_str)
             local_scheduled = localtime(scheduled_for)
             formatted_time = local_scheduled.strftime('%A, %B %d at %I:%M %p')
@@ -117,5 +125,6 @@ class ScheduleMeetingView(APIView):
             )
 
             return Response({'message': 'Meeting time scheduled'}, status=200)
+
         except ConsultationRequest.DoesNotExist:
             return Response({'error': 'Consultation not found'}, status=404)

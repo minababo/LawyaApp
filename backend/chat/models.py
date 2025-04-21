@@ -18,6 +18,7 @@ class MeetingSchedule(models.Model):
     scheduled_time = models.DateTimeField()
     created_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name='scheduled_meetings')
     created_at = models.DateTimeField(auto_now_add=True)
+    reminder_sent = models.BooleanField(default=False)
 
     def __str__(self):
         return f"Meeting for {self.consultation.id} at {self.scheduled_time}"

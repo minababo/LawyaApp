@@ -5,16 +5,16 @@ The app is built using **React Native** and **Expo Router**, and it serves as th
 
 ---
 
-## 🔍 Purpose
+## Purpose
 
 The Lawya mobile app enables clients to:
 
-- 📝 Register and log in securely using NIC-based identity
-- 🔎 Discover lawyers based on expertise and location
-- 📅 Book consultations using Consultation Points (CP)
-- 💬 Communicate via secure chatrooms with file sharing
-- 📂 View and edit profile information
-- 🔔 Get notifications about consultation status and updates
+- Register and log in securely using NIC-based identity
+- Discover lawyers based on expertise and location
+- Book consultations using Consultation Points (CP)
+- Communicate via secure chatrooms with file sharing
+- View and edit profile information
+- Get notifications about consultation status and updates
 
 Lawyers can also log in to manage incoming consultation requests and chat with clients.
 
@@ -22,7 +22,7 @@ This mobile app was developed as part of our university coursework for **PUSL202
 
 ---
 
-## 🧰 Tech Stack
+## Tech Stack
 
 - **Frontend Framework**: React Native + Expo
 - **Navigation**: Expo Router (file-based routing)

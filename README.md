@@ -6,34 +6,34 @@ Developed for the **PUSL2021 – Computing Group Project**, Lawya features a **R
 
 ---
 
-## 🧩 Project Structure
+## Project Structure
 
 ```
 LawyaApp/
-├── client-app/         # 📱 Mobile app (React Native + Expo)
-├── admin-panel/        # 🛠️ Admin web panel (React + Vite)
-├── backend/            # 🧠 Django API backend (SQL Server)
-└── README.md           # 📄 You're here!
+├── client-app/         #Mobile app (React Native + Expo)
+├── admin-panel/        #Admin web panel (React + Vite)
+├── backend/            #Django API backend (SQL Server)
+└── README.md
 ```
 
 ---
 
-## 🎯 Purpose
+## Purpose
 
 Lawya aims to solve accessibility issues in Sri Lanka’s legal system by offering:
 
-- ✅ Remote consultations between lawyers and clients
-- 🔐 Verified lawyer registrations with admin approval
-- 💬 Secure chatroom and document sharing
-- 🧠 Lawyer search and filtering based on expertise
-- 🗓️ Booking system with Consultation Points (CP)
-- 🔔 Notifications and appointment reminders
+- Remote consultations between lawyers and clients
+- Verified lawyer registrations with admin approval
+- Secure chatroom and document sharing
+- Lawyer search and filtering based on expertise
+- Booking system with Consultation Points (CP)
+- Notifications and appointment reminders
 
 The system streamlines legal help for users in underserved areas and modernizes client-lawyer interaction.
 
 ---
 
-## 🧰 Tech Stack
+## Tech Stack
 
 | Layer        | Stack                                           |
 |--------------|-------------------------------------------------|
@@ -46,9 +46,9 @@ The system streamlines legal help for users in underserved areas and modernizes 
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
-### 📦 1. Backend Setup
+### 1. Backend Setup
 
 ```bash
 cd backend
@@ -59,7 +59,7 @@ python manage.py migrate
 python manage.py runserver 0.0.0.0:8000
 ```
 
-### 📱 2. Mobile App (client-app)
+### 2. Mobile App (client-app)
 
 ```bash
 cd client-app
@@ -69,7 +69,7 @@ npx expo start
 
 Open with **Expo Go**, emulator, or dev build.
 
-### 🖥️ 3. Admin Panel (admin-panel)
+### 3. Admin Panel (admin-panel)
 
 ```bash
 cd admin-panel
@@ -81,7 +81,7 @@ Visit: [http://localhost:5173](http://localhost:5173)
 
 ---
 
-## 🧑‍⚖️ Roles and Features
+## Roles and Features
 
 | Role     | Features                                                                 |
 |----------|--------------------------------------------------------------------------|
@@ -91,7 +91,7 @@ Visit: [http://localhost:5173](http://localhost:5173)
 
 ---
 
-## 📚 Docs for Each Module
+## Docs for Each Module
 
 - [`client-app/README.md`](./client-app/README.md) – React Native app
 - [`admin-panel/README.md`](./admin-panel/README.md) – Admin panel
@@ -99,15 +99,15 @@ Visit: [http://localhost:5173](http://localhost:5173)
 
 ---
 
-## 👨‍🎓 Project Info
+##  Project Info
 
-- 📘 **Module**: PUSL2021 – Computing Group Project  
-- 🧑‍🤝‍🧑 **Group**: Group 82
-- 🔖 **Year**: 2024/25
+- **Module**: PUSL2021 – Computing Group Project  
+- **Group**: Group 82
+- **Year**: 2024/25
 
 ---
 
-## 💡 Future Enhancements
+## Future Enhancements
 
 - Push notifications (FCM)
 - Live consultation scheduling with calendar view

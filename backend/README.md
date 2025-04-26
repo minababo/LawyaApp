@@ -6,23 +6,23 @@ The backend is built using **Django** and the **Django REST Framework**, and is 
 
 ---
 
-## 🔍 Purpose
+## Purpose
 
 This backend provides all business logic and data handling for the Lawya platform:
 
-- 🔐 Token-based user authentication
-- 🧾 Role-based account creation (client, lawyer, admin)
-- 📄 Lawyer registration with document uploads
-- ✅ Admin approval system for lawyers
-- 🗓️ Consultation request and response flow
-- 💬 Encrypted messaging/chatroom per consultation
-- 🧠 Profile management for both clients and lawyers
-- 🔔 Notification system for status updates and reminders
-- 🪙 Consultation Point (CP) balance management
+- Token-based user authentication
+- Role-based account creation (client, lawyer, admin)
+- Lawyer registration with document uploads
+- Admin approval system for lawyers
+- Consultation request and response flow
+- Encrypted messaging/chatroom per consultation
+- Profile management for both clients and lawyers
+- Notification system for status updates and reminders
+- Consultation Point (CP) balance management
 
 ---
 
-## ⚙️ Tech Stack
+## Tech Stack
 
 - **Backend Framework**: Django 4.x
 - **API**: Django REST Framework

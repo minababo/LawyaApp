@@ -6,21 +6,21 @@ The admin panel is built using **React + TypeScript** and provides tools for man
 
 ---
 
-## 🔍 Purpose
+## Purpose
 
 The Admin Panel allows system administrators to:
 
-- 🔎 **Review, approve, or reject lawyer registrations**
-- 📜 **View uploaded qualification documents (e.g., certifications)**
-- 🧮 **Filter and sort lawyers by approval status, expertise, NIC, and registration date**
-- 🔐 **Securely log in using token-based authentication**
-- 📊 *(Planned)* Monitor consultation trends, registration growth, and system statistics
+- **Review, approve, or reject lawyer registrations**
+- **View uploaded qualification documents (e.g., certifications)**
+- **Filter and sort lawyers by approval status, expertise, NIC, and registration date**
+- **Securely log in using token-based authentication**
+- *(Planned)* Monitor consultation trends, registration growth, and system statistics
 
 This admin interface was developed as part of our university coursework for **PUSL2021 – Computing Group Project**.
 
 ---
 
-## 🧰 Tech Stack
+## Tech Stack
 
 - **Frontend**: React + TypeScript
 - **UI Framework**: Custom CSS (styled to match the Lawya mobile app's modern look)

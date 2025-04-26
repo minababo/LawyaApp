@@ -1,8 +1,8 @@
 # ⚖️ Lawya – Online Judicial Services App
 
-Lawya is a full-stack mobile and web platform designed to connect clients in rural Sri Lanka with verified lawyers for secure and accessible legal consultations.
+Lawya is a full-stack mobile and web platform designed to connect clients in Sri Lanka with verified lawyers for secure and accessible legal consultations.
 
-Developed for the **PUSL2021 – Computing Group Project**, Lawya features a **React Native mobile app**, a **React-based admin panel**, and a **Django backend with SQL Server**.
+It features a **React Native mobile app**, a **React-based admin panel**, and a **Django backend with SQL Server**.
 
 ---
 

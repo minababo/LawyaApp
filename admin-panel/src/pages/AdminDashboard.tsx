@@ -119,7 +119,7 @@ export default function AdminDashboard() {
               <div style={styles.metaRow}>
                 <strong>Qualification:</strong>{' '}
                 <a
-                  href={`http://127.0.0.1:8000/media/${lawyer.qualifications}`}
+                  href={`http://127.0.0.1:8000/${lawyer.qualifications}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   style={styles.link}

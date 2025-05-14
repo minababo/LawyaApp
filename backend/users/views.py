@@ -118,30 +118,6 @@ def approve_lawyer(request, user_id):
     except LawyerProfile.DoesNotExist:
         return Response({'error': 'Lawyer not found'}, status=404)
     
-# @api_view(['GET'])
-# @authentication_classes([TokenAuthentication])
-# @permission_classes([IsAuthenticated])
-# def get_lawyer_profile(request):
-#     try:
-#         profile = request.user.lawyerprofile
-#         serializer = LawyerProfileSerializer(profile)
-#         return Response(serializer.data)
-#     except:
-#         return Response({'error': 'Lawyer profile not found'}, status=404)
-    
-# @api_view(['GET'])
-# @authentication_classes([TokenAuthentication])
-# @permission_classes([IsAuthenticated])
-# def get_client_profile(request):
-#     if request.user.role != 'client':
-#         return Response({'error': 'Unauthorized'}, status=403)
-
-#     try:
-#         client_profile = request.user.clientprofile
-#         serializer = ClientProfileSerializer(client_profile)
-#         return Response(serializer.data)
-#     except:
-#         return Response({'error': 'Client profile not found'}, status=404)
 
 @api_view(['GET'])
 @authentication_classes([TokenAuthentication])
